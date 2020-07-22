@@ -43,7 +43,7 @@
 				</thead>
 				<tbody>
 				@foreach($homeLists as $homeList)
-					@if($homeList->checkFlg == false)
+					
 					<tr>
 						<th>{{$homeList->id}}</th>
 						<td data-label="都道府県" class="txt">{{$homeList->ikisaki}}</td>
@@ -53,7 +53,7 @@
 						<td data-label="仮払金" class="price"><a href="{{ route('contact.show',['id' => $homeList->id ]) }}">詳細</a></td> 
 						<td data-label="仮払金" class="price"><a href="{{ route('hokoku.create',['id' => $homeList->id ]) }}">報告する</a></td> 
 					</tr>
-					@endif
+					
 				@endforeach
 				</tbody>
 			</table>
