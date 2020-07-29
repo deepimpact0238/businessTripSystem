@@ -49,7 +49,9 @@ return [
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
+            //以下をコメントアウト
+            //'path' => storage_path('logs/laravel.log'),
+            'path' => env('LOG_FILE_PATH_APP'),
             'level' => 'debug',
             'days' => 14,
         ],
