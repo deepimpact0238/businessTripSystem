@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\storePost;
 use App\Models\ShinseiForm;
+use Auth;
 
 class ContactFormController extends Controller
 {
@@ -22,19 +23,8 @@ class ContactFormController extends Controller
         //
         $homeLists = DB::table('shinsei_forms')
         ->select('id','ikisaki','From','To','kariharai','checkFlg')
+        ->where('name', Auth::user()->name )
         ->get();
-
-        //dd($homeLists);
-
-/*         $test1 = DB::table('shinsei_forms')
-        ->select('id')
-        ->get();
-
-        $test2 = DB::table('hokoku_forms')
-        ->select('id')
-        ->get(); */
-
-        //dd($test1);
 
         return view('.contact/businessTripHome',compact('homeLists'));
      
