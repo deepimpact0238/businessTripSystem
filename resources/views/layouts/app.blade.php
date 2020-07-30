@@ -56,6 +56,16 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item"　href="{{ route('rireki.show') }}" onclick="location.href='./rireki'">
+                                     履歴
+                                    </a>
+                                    <!-- もし管理者権限を持つアカウントなら表示 -->
+                                    @if 
+                                    <a class="dropdown-item"　href="{{ route('kanri.show') }}" onclick="location.href='./kanri'">
+                                     管理画面
+                                    </a>
+                                    @endif
+                                    <!-- もし管理者権限を持つアカウントなら表示 -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -66,9 +76,7 @@
                                         @csrf
                                     </form>
 
-                                    <a class="dropdown-item"　href="{{ route('rireki.show') }}" onclick="location.href='./rireki'">
-                                     履歴
-                                    </a>
+
                                 </div>
                             </li>
                         @endguest
