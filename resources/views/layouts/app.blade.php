@@ -60,11 +60,11 @@
                                      履歴
                                     </a>
                                     <!-- もし管理者権限を持つアカウントなら表示 -->
-                                    @if 
-                                    <a class="dropdown-item"　href="{{ route('kanri.show') }}" onclick="location.href='./kanri'">
+                                    
+                                    <a class="dropdown-item"　href="{{ route('kanri.index') }}" onclick="location.href='./kanri'">
                                      管理画面
                                     </a>
-                                    @endif
+                                    
                                     <!-- もし管理者権限を持つアカウントなら表示 -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

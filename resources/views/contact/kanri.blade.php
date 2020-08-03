@@ -35,25 +35,44 @@
 				<thead>
 					<tr>
 						<td class="non"></td>
+						<th scope="col">部署</th>
+						<th scope="col">名前</th>
 						<th scope="col">都道府県</th>
 						<th scope="col">開始日</th>
 						<th scope="col">終了日</th>
 						<th scope="col">仮払金</th>
 						<th scope="col">詳細</th>
 						<th scope="col">報告ページ</th>
+						<th scope="col">状態</th>
 					</tr>
 				</thead>
 				<tbody>
-				@foreach($homeLists as $homeList)
-					@if($homeList->checkFlg == false)
+				@foreach($kanriLists as $kanriList)
+					@if($kanriList->checkFlg == false)
 					<tr>
-						<th>{{$homeList->id}}</th>
-						<td data-label="都道府県" class="txt">{{$homeList->ikisaki}}</td>
-						<td data-label="開始日" class="txt">{{ $homeList->From}}</td>
-						<td data-label="終了日" class="txt">{{ $homeList->To}}</td>
-						<td data-label="仮払金" class="price">{{ $homeList->kariharai}}</td>
-						<td data-label="仮払金" class="price"><a href="{{ route('contact.show',['id' => $homeList->id ]) }}">詳細</a></td> 
-						<td data-label="仮払金" class="price"><a href="{{ route('hokoku.create',['id' => $homeList->id ]) }}">報告する</a></td> 
+						<th>{{$kanriList->id}}</th>
+						<td data-label="都道府県" class="txt">{{$kanriList->ikisaki}}</td>
+						<td data-label="部署" class="txt">{{$kanriList->busyo}}</td>
+						<td data-label="名前" class="txt">{{$kanriList->name}}</td>
+						<td data-label="開始日" class="txt">{{ $kanriList->From}}</td>
+						<td data-label="終了日" class="txt">{{ $kanriList->To}}</td>
+						<td data-label="仮払金" class="price">{{ $kanriList->kariharai}}</td>
+						<td data-label="仮払金" class="price"><a href="{{ route('contact.show',['id' => $kanriList->id ]) }}">詳細</a></td> 
+						<td data-label="仮払金" class="price"><a href="{{ route('hokoku.create',['id' => $kanriList->id ]) }}">報告する</a></td> 
+						<td data-label="仮払金" class="price">申請済</td> 
+					</tr>
+					@elseif($kanriList->checkFlg == true)
+					<tr>
+						<th>{{$kanriList->id}}</th>
+						<td data-label="都道府県" class="txt">{{$kanriList->ikisaki}}</td>
+						<td data-label="部署" class="txt">{{$kanriList->busyo}}</td>
+						<td data-label="名前" class="txt">{{$kanriList->name}}</td>
+						<td data-label="開始日" class="txt">{{ $kanriList->From}}</td>
+						<td data-label="終了日" class="txt">{{ $kanriList->To}}</td>
+						<td data-label="仮払金" class="price">{{ $kanriList->kariharai}}</td>
+						<td data-label="仮払金" class="price"><a href="{{ route('contact.show',['id' => $kanriList->id ]) }}">詳細</a></td> 
+						<td data-label="仮払金" class="price"><a href="{{ route('hokoku.create',['id' => $kanriList->id ]) }}">報告内容</a></td> 
+						<td data-label="仮払金" class="price">報告済</td> 
 					</tr>
 					@endif
 				@endforeach

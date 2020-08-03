@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'contact', 'middleware' => 'auth'], function(){
 
     Route::get('rireki', 'HomeController@show')->name('rireki.show');
+    Route::get('kanri', 'KanriController@index')->name('kanri.index');
     Route::get('home', 'ContactFormController@index')->name('businessTripHome.index');
     Route::get('shinsei', 'ContactFormController@create')->name('shinsei.create');
     Route::get('hokokuHome', 'hokokuController@index')->name('hokoku.index');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\storePost;
 use App\Models\ShinseiForm;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -37,8 +38,11 @@ class HomeController extends Controller
         ->select('name')
         ->get();
 
-        $contact = ShinseiForm::find();
+        $rirekiLists = DB::table('shinsei_forms')
+        ->select('id','ikisaki','From','To','kariharai','checkFlg')
+        ->where('name', Auth::user()->name )
+        ->get();
 
-        return view('contact.rireki', compact('contact','prefectures'));
+        return view('contact.rireki', compact('rirekiLists','prefectures'));
     }
 }
