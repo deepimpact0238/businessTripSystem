@@ -52,19 +52,23 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->busyo }}
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} 
+                                    <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item"　href="{{ route('rireki.show') }}" onclick="location.href='./rireki'">
+                                
+                                    <a class="dropdown-item" href="{{ route('rireki.show') }}" onclick="location.href='./rireki'">
                                      履歴
                                     </a>
                                     <!-- もし管理者権限を持つアカウントなら表示 -->
-                                    
-                                    <a class="dropdown-item"　href="{{ route('kanri.index') }}" onclick="location.href='./kanri'">
+                                    @if(Auth::user()->adminFlg == true)
+                                    <a class="dropdown-item" href="{{ route('kanri.index') }}" onclick="location.href='./kanri'">
                                      管理画面
                                     </a>
+                                    @else
                                     
+                                    @endif
                                     <!-- もし管理者権限を持つアカウントなら表示 -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

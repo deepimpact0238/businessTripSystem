@@ -13,17 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::get('/', function () {
-    return view('auth.login');
-}); */
 
-/* Route::resource('contacts','ContactFormController')->only([
-    
-]); */
-
-//Route::get('/shinsei', 'ContactFormController@create')->name('shinsei.create');
-
-//Route::get('/hokoku', 'hokokuController@index')->name('hokoku');
 
 
 Route::group(['prefix' => 'contact', 'middleware' => 'auth'], function(){

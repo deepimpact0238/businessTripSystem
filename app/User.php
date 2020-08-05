@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //ここで主キーの設定
+    protected $primaryKey = 'syainID';
+
 }
