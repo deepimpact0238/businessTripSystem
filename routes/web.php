@@ -25,7 +25,7 @@ Route::group(['prefix' => 'contact', 'middleware' => 'auth'], function(){
     Route::get('hokokuHome', 'hokokuController@index')->name('hokoku.index');
     Route::get('hokoku/{id}', 'hokokuController@create')->name('hokoku.create');
     Route::get('pdf','PDFController@index')->name('pdf.index');
-    Route::get('users/export', 'ExcelController@export')->name('users.export');
+    Route::get('excel','ExcelController@index')->name('excel.index');
 
     Route::post('hokokuStore', 'hokokuController@store')->name('hokoku.store');
     Route::post('flgset/{id}', 'hokokuController@flgset')->name('hokoku.flgset');
