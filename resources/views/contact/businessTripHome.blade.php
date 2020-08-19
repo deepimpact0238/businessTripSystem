@@ -39,6 +39,7 @@
 						<th scope="col">仮払金</th>
 						<th scope="col">詳細</th>
 						<th scope="col">報告ページ</th>
+						<th scope="col">ダウンロード</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,6 +53,7 @@
 						<td data-label="仮払金" class="price">{{ $homeList->kariharai}}</td>
 						<td data-label="仮払金" class="price"><a href="{{ route('contact.show',['id' => $homeList->id ]) }}">詳細</a></td> 
 						<td data-label="仮払金" class="price"><a href="{{ route('hokoku.create',['id' => $homeList->id ]) }}">報告する</a></td> 
+						<td data-label="仮払金" class="price"><a href="{{ route('excel.index',['id' => $homeList->id ]) }}">ダウンロード</a></td> 
 					</tr>
 					@endif
 				@endforeach
