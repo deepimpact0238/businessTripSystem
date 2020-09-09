@@ -31,12 +31,11 @@ class ExcelController extends Controller
 
         //下記以外のものを$idを条件として取得
         $contact = ShinseiForm::find($id);
-
         $spreadsheet = IOFactory::load(public_path() . '/excel/shinsei_template.xlsx');
         $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue('H4', 'システム開発部');
-        $sheet->setCellValue('B6', 'システム開発部');
-        $sheet->setCellValue('B8', '米村郁也');
+        //$sheet->setCellValue('H4', 'システム開発部');
+        $sheet->setCellValue('B6', Auth::user()->busyo);
+        $sheet->setCellValue('B8', Auth::user()->name);
         $sheet->setCellValue('B12', '東京都');
         $sheet->setCellValue('B13', '2020/08/01');
         $sheet->setCellValue('D13', '2020/08/02');
@@ -57,16 +56,22 @@ class ExcelController extends Controller
 
         File::setUseUploadTempDirectory(public_path());
 
-        //PDFの作成
-        $writer = IOFactory::createWriter($spreadsheet, 'Dompdf');
-        //$writer->setFont('ipaexm');
-        //public/excelの階層にダウンロード
-        $writer->save(public_path() . '/excel/shinsei_test.pdf');
-
 
         //excelの保存
         $writer = new Xlsx($spreadsheet);
         $writer->save(public_path() . '/excel/shinsei_test.xlsx');
+
+
+        //PDFの作成
+        $spreadsheet = IOFactory::load(public_path() . '/excel/shinsei_test.xlsx');
+        //TCPDF用にフォントを変換して設定する
+        $fontName = new \TCPDF_FONTS();
+        $fontName = $fontName->addTTFFont(storage_path('fonts/ipag.ttf'));
+        $writer = IOFactory::createWriter($spreadsheet, 'Tcpdf');
+        $writer->setFont($fontName,'', '', '');
+        
+        //public/excelの階層にダウンロード
+        $writer->save(public_path() . '/excel/shinsei_test.pdf');
 
 
         $homeLists = DB::table('shinsei_forms')
@@ -75,6 +80,9 @@ class ExcelController extends Controller
         ->get();
 
         return view('.contact/businessTripHome',compact('homeLists'));
+
+
+
     }
 
 

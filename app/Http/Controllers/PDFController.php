@@ -27,8 +27,8 @@ class PDFController extends Controller
 
     public function index(){
 
-        $pdf = PDF::loadView('contact/shinseiPDF');
-        //$pdf = PDF::loadHTML('<h1>Hello World</h1>');
+        //$pdf = PDF::loadView('contact/shinseiPDF');
+        $pdf = PDF::loadHTML('<h1>米村テスト</h1>');
 
         return $pdf->stream();
 

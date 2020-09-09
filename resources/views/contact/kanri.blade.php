@@ -19,7 +19,6 @@
 			<header>
 			   <div class="row">
 			    <button onclick="location.href='./home'">ホームへ</button>
-				<button onclick="location.href='./shinsei'">申請する</button>
 				<button onclick="location.href=''">CSV出力</button>
 				<button onclick="location.href=''">マスタ金額変更</button>
 
