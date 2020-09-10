@@ -24,6 +24,7 @@ Route::group(['prefix' => 'contact', 'middleware' => 'auth'], function(){
     Route::get('shinsei', 'ContactFormController@create')->name('shinsei.create');
     Route::get('hokokuHome', 'hokokuController@index')->name('hokoku.index');
     Route::get('hokoku/{id}', 'hokokuController@create')->name('hokoku.create');
+    Route::get('master', 'MasterController@index')->name('master.index');
     Route::get('pdf','PDFController@index')->name('pdf.index');
     Route::get('excel/{id}','ExcelController@index')->name('excel.index');
 

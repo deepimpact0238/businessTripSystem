@@ -20,7 +20,7 @@
 			   <div class="row">
 			    <button onclick="location.href='./home'">ホームへ</button>
 				<button onclick="location.href=''">CSV出力</button>
-				<button onclick="location.href=''">マスタ金額変更</button>
+				<button onclick="location.href='./master'">マスタ金額変更</button>
 
 				</div>
 			</header>
